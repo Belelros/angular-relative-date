@@ -45,7 +45,7 @@
       calculateDelta = function(now, date) {
         return Math.round(Math.abs(now - date) / 1000);
       };
-      return function(date) {
+      var relativeDateFilter = function(date) {
         var day, delta, hour, minute, month, now, translate, week, year;
         now = _now ? _now : new Date();
         if (!(date instanceof Date)) {
@@ -107,6 +107,10 @@
             return translate('over_a_year');
         }
       };
+
+      relativeDateFilter.$stateful = true;
+
+      return relativeDateFilter;
     }
   ]);
 
